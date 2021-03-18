@@ -1,0 +1,12 @@
+D:\Side Proj\SchoolsSys\SchoolSys.BL\bin\Debug\SchoolSys.BL.dll.config
+D:\Side Proj\SchoolsSys\SchoolSys.BL\bin\Debug\SchoolSys.BL.dll
+D:\Side Proj\SchoolsSys\SchoolSys.BL\bin\Debug\SchoolSys.BL.pdb
+D:\Side Proj\SchoolsSys\SchoolSys.BL\bin\Debug\EntityFramework.dll
+D:\Side Proj\SchoolsSys\SchoolSys.BL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Side Proj\SchoolsSys\SchoolSys.BL\bin\Debug\EntityFramework.xml
+D:\Side Proj\SchoolsSys\SchoolSys.BL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Side Proj\SchoolsSys\SchoolSys.BL\obj\Debug\SchoolSys.BL.csprojAssemblyReference.cache
+D:\Side Proj\SchoolsSys\SchoolSys.BL\obj\Debug\SchoolSys.BL.csproj.CoreCompileInputs.cache
+D:\Side Proj\SchoolsSys\SchoolSys.BL\obj\Debug\SchoolSys.BL.csproj.CopyComplete
+D:\Side Proj\SchoolsSys\SchoolSys.BL\obj\Debug\SchoolSys.BL.dll
+D:\Side Proj\SchoolsSys\SchoolSys.BL\obj\Debug\SchoolSys.BL.pdb

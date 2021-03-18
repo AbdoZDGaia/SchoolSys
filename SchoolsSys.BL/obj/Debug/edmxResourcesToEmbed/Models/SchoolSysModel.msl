@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SchoolsSysDBModelStoreContainer" CdmEntityContainer="SchoolsSysDBEntities">
+    <EntitySetMapping Name="Attachments">
+      <EntityTypeMapping TypeName="SchoolsSysDBModel.Attachment">
+        <MappingFragment StoreEntitySet="Attachments">
+          <ScalarProperty Name="AttachmentId" ColumnName="AttachmentId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="SchoolsSysDBModel.Class">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="ClassNameEn" ColumnName="ClassNameEn" />
+          <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grades">
+      <EntityTypeMapping TypeName="SchoolsSysDBModel.Grade">
+        <MappingFragment StoreEntitySet="Grades">
+          <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+          <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+          <ScalarProperty Name="GradeNameEn" ColumnName="GradeNameEn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="SchoolsSysDBModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="GenderTypeId" ColumnName="GenderTypeId" />
+          <ScalarProperty Name="PickupLongitude" ColumnName="PickupLongitude" />
+          <ScalarProperty Name="PickupLatitude" ColumnName="PickupLatitude" />
+          <ScalarProperty Name="DropOffLongitude" ColumnName="DropOffLongitude" />
+          <ScalarProperty Name="DropOffLatitude" ColumnName="DropOffLatitude" />
+          <ScalarProperty Name="SubscribedToBus" ColumnName="SubscribedToBus" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ProfilePicturePath" ColumnName="ProfilePicturePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

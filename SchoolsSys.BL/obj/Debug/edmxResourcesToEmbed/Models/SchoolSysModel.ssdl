@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchoolsSysDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attachments">
+    <Key>
+      <PropertyRef Name="AttachmentId" />
+    </Key>
+    <Property Name="AttachmentId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" />
+    <Property Name="FileName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Name="ClassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClassNameEn" Type="nvarchar(max)" />
+    <Property Name="GradeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Grades">
+    <Key>
+      <PropertyRef Name="GradeId" />
+    </Key>
+    <Property Name="GradeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GradeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="GradeNameEn" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GradeId" Type="int" Nullable="false" />
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+    <Property Name="GenderTypeId" Type="int" Nullable="false" />
+    <Property Name="PickupLongitude" Type="decimal" Precision="9" Scale="6" />
+    <Property Name="PickupLatitude" Type="decimal" Precision="9" Scale="6" />
+    <Property Name="DropOffLongitude" Type="decimal" Precision="9" Scale="6" />
+    <Property Name="DropOffLatitude" Type="decimal" Precision="9" Scale="6" />
+    <Property Name="SubscribedToBus" Type="bit" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="16" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfilePicturePath" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_Attachments_Students">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="Attachments" Type="Self.Attachments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Attachments">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classes_Grades">
+    <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+    <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grades">
+        <PropertyRef Name="GradeId" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="GradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Classes">
+    <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Grades">
+    <End Role="Grades" Type="Self.Grades" Multiplicity="1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grades">
+        <PropertyRef Name="GradeId" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="GradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SchoolsSysDBModelStoreContainer">
+    <EntitySet Name="Attachments" EntityType="Self.Attachments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Attachments_Students" Association="Self.FK_Attachments_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Attachments" EntitySet="Attachments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classes_Grades" Association="Self.FK_Classes_Grades">
+      <End Role="Grades" EntitySet="Grades" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Classes" Association="Self.FK_Students_Classes">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Grades" Association="Self.FK_Students_Grades">
+      <End Role="Grades" EntitySet="Grades" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,8 @@
+D:\Side Proj\SchoolsSys\SchoolsSys.Web\obj\Debug\netstandard2.0\SchoolsSys.Web.csprojAssemblyReference.cache
+D:\Side Proj\SchoolsSys\SchoolsSys.Web\obj\Debug\netstandard2.0\SchoolsSys.Web.AssemblyInfoInputs.cache
+D:\Side Proj\SchoolsSys\SchoolsSys.Web\obj\Debug\netstandard2.0\SchoolsSys.Web.AssemblyInfo.cs
+D:\Side Proj\SchoolsSys\SchoolsSys.Web\obj\Debug\netstandard2.0\SchoolsSys.Web.csproj.CoreCompileInputs.cache
+F:\Work\Mine\Side Proj\SchoolsSys\SchoolsSys.Web\obj\Debug\netstandard2.0\SchoolsSys.Web.csprojAssemblyReference.cache
+F:\Work\Mine\Side Proj\SchoolsSys\SchoolsSys.Web\obj\Debug\netstandard2.0\SchoolsSys.Web.AssemblyInfoInputs.cache
+F:\Work\Mine\Side Proj\SchoolsSys\SchoolsSys.Web\obj\Debug\netstandard2.0\SchoolsSys.Web.AssemblyInfo.cs
+F:\Work\Mine\Side Proj\SchoolsSys\SchoolsSys.Web\obj\Debug\netstandard2.0\SchoolsSys.Web.csproj.CoreCompileInputs.cache
