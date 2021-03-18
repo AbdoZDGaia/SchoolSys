@@ -7,6 +7,7 @@ import { StudentDTO } from './models/students.model';
 import { QueryService } from './services/query.service';
 import { StudentsService } from './services/students.service';
 import { config } from './Shared/config';
+import { Plugins } from '@capacitor/core';
 
 @Component({
   selector: 'app-root',

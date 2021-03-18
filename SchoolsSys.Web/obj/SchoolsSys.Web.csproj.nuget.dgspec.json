@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Side Proj\\Git\\SchoolSys\\SchoolsSys.Web\\SchoolsSys.Web.csproj": {}
+    "F:\\Work\\Mine\\Git\\SchoolSys\\SchoolsSys.Web\\SchoolsSys.Web.csproj": {}
   },
   "projects": {
-    "D:\\Side Proj\\Git\\SchoolSys\\SchoolsSys.Web\\SchoolsSys.Web.csproj": {
+    "F:\\Work\\Mine\\Git\\SchoolSys\\SchoolsSys.Web\\SchoolsSys.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Side Proj\\Git\\SchoolSys\\SchoolsSys.Web\\SchoolsSys.Web.csproj",
+        "projectUniqueName": "F:\\Work\\Mine\\Git\\SchoolSys\\SchoolsSys.Web\\SchoolsSys.Web.csproj",
         "projectName": "SchoolsSys.Web",
-        "projectPath": "D:\\Side Proj\\Git\\SchoolSys\\SchoolsSys.Web\\SchoolsSys.Web.csproj",
-        "packagesPath": "C:\\Users\\abdulrahman.seliem\\.nuget\\packages\\",
-        "outputPath": "D:\\Side Proj\\Git\\SchoolSys\\SchoolsSys.Web\\obj\\",
+        "projectPath": "F:\\Work\\Mine\\Git\\SchoolSys\\SchoolsSys.Web\\SchoolsSys.Web.csproj",
+        "packagesPath": "C:\\Users\\abdel\\.nuget\\packages\\",
+        "outputPath": "F:\\Work\\Mine\\Git\\SchoolSys\\SchoolsSys.Web\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\abdulrahman.seliem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,7 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "E:\\Excercises\\AbdoZBakeryHRM\\Nugets": {},
+          "F:\\Excercises\\PSBlazor\\AbdoZBakeryHRM.App\\Nuget Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,7 +58,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

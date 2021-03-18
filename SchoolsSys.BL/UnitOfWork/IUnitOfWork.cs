@@ -9,6 +9,5 @@ namespace SchoolsSys.BL.UnitOfWork
         IAttachmentsRepository Attachments { get; }
         IStudentsRepository Students { get; }
         int Complete();
-        T GetAdded<T>();
     }
 }

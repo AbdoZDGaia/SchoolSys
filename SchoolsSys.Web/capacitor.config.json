@@ -1,0 +1,13 @@
+{
+  "appId": "com.example.app",
+  "appName": "schools-sys-ang",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

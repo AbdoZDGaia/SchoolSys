@@ -25,7 +25,6 @@ namespace SchoolSys.API.Controllers
                 }
                 _students.Add(EntityConverters.PopulateNewStudentFromDTO(student));
                 UoW.Complete();
-                UoW.GetAdded<Student>();
             }
             return student;
         }
