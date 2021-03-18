@@ -1,0 +1,22 @@
+input.ng-invalid{
+  border-left: 5px solid #dc3545;
+}
+
+select.ng-invalid{
+  border-left: 5px solid #dc3545;
+}
+
+input.ng-valid{
+  border-left: 5px solid green;
+}
+
+select.ng-valid{
+  border-left: 5px solid green;
+}
+
+div.validation-error{
+  width: 100%;
+  margin: top 0.25rem ;
+  font-size: 80%;
+  color: #dc3545;
+}

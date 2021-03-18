@@ -1,0 +1,45 @@
+<div class="map-frame">
+  <div id="map"></div>
+</div>
+<div class="input-group mb-1">
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <button type="button" (click)="AddPickupMarker()" class="btn btn-outline-success w-100">
+          <fa-icon [icon]="markerIcon"></fa-icon> Pickup &nbsp;
+        </button>
+      </div>
+      <div class="col-md-5 px-1 d-flex align-items-center ">
+        <span class="input-group-text">Longitude</span>
+        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+          aria-describedby="button-addon1" [value]="pickupMarker.Longitude">
+      </div>
+      <div class="col-md-5 px-1 d-flex align-items-center">
+        <span class="input-group-text">Latitude</span>
+        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+          aria-describedby="button-addon1" [value]="pickupMarker.Latitude">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="input-group mb-1">
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <button type="button" (click)="AddDropoffMarker()" class="btn btn-outline-danger w-100">
+          <fa-icon [icon]="markerIcon"></fa-icon> Dropoff
+        </button>
+      </div>
+      <div class="col-md-5 px-1 d-flex align-items-center ">
+        <span class="input-group-text">Longitude</span>
+        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+          aria-describedby="button-addon1" [value]="dropoffMarker.Longitude">
+      </div>
+      <div class="col-md-5 px-1 d-flex align-items-center">
+        <span class="input-group-text">Latitude</span>
+        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+          aria-describedby="button-addon1" [value]="dropoffMarker.Latitude">
+      </div>
+    </div>
+  </div>
+</div>

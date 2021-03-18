@@ -1,0 +1,163 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Schools System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li> -->
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+  <h1 class="mt-5">Students</h1>
+  <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <img [src]="formData.ProfilePicturePath" class="img-thumbnail profile-pic" alt="...">
+        <app-upload [isReset]="uploadReset" (onUploadFinished)="uploadFinished($event)"></app-upload>
+      </div>
+      <div class="form-group col-md-8">
+        <div class="map">
+          <app-map [inputPickupMarker]="pickupMarker" [inputDropOffMarker]="dropOffMarker"
+            (addMarkerEvent)="addMarkers($event)">
+          </app-map>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="firstName">First name</label>
+        <input class="form-control" name="firstName" #firstName="ngModel" [(ngModel)]="formData.FirstName"
+          id="firstName" required>
+        <div class="validation-error" *ngIf="firstName.invalid && firstName.touched">
+          This field is required
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="middleName">Middle name</label>
+        <input class="form-control" name="middleName" #middleName="ngModel" [(ngModel)]="formData.MiddleName"
+          id="middleName" required>
+        <div class="validation-error" *ngIf="middleName.invalid && middleName.touched">
+          This field is required
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="lastName">Last name</label>
+        <input class="form-control" name="lastName" #lastName="ngModel" [(ngModel)]="formData.LastName" id="lastName"
+          required>
+        <div class="validation-error" *ngIf="lastName.invalid && lastName.touched">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="mobileNumber">Mobile number</label>
+        <input digitOnly maxlength="11" inputmode="numeric" pattern="[0-9]*" class="form-control" name="mobileNumber"
+          #mobileNumber="ngModel" [(ngModel)]="formData.MobileNumber" id="mobileNumber" required>
+        <div class="validation-error" *ngIf="mobileNumber.invalid && mobileNumber.touched">
+          This field is required
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="email">Email</label>
+        <input type='email' class="form-control" name="email" #email="ngModel" [(ngModel)]="formData.Email" id="email"
+          email required>
+        <div class="validation-error" *ngIf="email.invalid && email.touched">
+          Enter a valid email
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="genderTypeId">Gender</label>
+        <select id="genderTypeId" #genderTypeId="ngModel" name="genderTypeId" [(ngModel)]="formData.GenderTypeId"
+          required class="form-control">
+          <option [ngValue]="null">---Select---</option>
+          <option value="1">Male</option>
+          <option value="2">Female</option>
+        </select>
+        <div class="validation-error" *ngIf="genderTypeId.invalid && genderTypeId.touched">
+          Choose a gender
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="gradeId">Grade</label>
+        <select id="gradeId" #gradeId="ngModel" name="gradeId" [(ngModel)]="formData.GradeId" class="form-control"
+          (change)="onSelect(formData.GradeId)" required>
+          <option [ngValue]="null">---Select---</option>
+          <option *ngFor="let grade of grades" [ngValue]="grade.Id">
+            {{grade.NameEn}}
+          </option>
+        </select>
+        <div class="validation-error" *ngIf="gradeId.invalid && gradeId.touched">
+          Choose a grade
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="classId">Class</label>
+        <select id="classId" #classId="ngModel" name="classId" [(ngModel)]="formData.ClassId" class="form-control"
+          required>
+          <option [ngValue]="null">---Select---</option>
+          <option *ngFor="let class of classes" [ngValue]="class.Id">
+            {{class.NameEn}}
+          </option>
+        </select>
+        <div class="validation-error" *ngIf="classId.invalid && classId.touched">
+          Choose a class
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="birthDate">Birth date</label>
+        <input type='date' class="form-control" name="birthDate" #birthDate="ngModel" [(ngModel)]="formData.BirthDate"
+          id="birthDate" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4 uploader">
+        <angular-file-uploader [config]="afuConfig" (ApiResponse)="FileUploaded($event)">
+        </angular-file-uploader>
+      </div>
+      <div class="form-group col-md-4">
+        <div class="form-check">
+          <input class="form-check-input" name="subscribedToBus" type="checkbox" #subscribedToBus="ngModel"
+            [(ngModel)]="formData.SubscribedToBus" id="subscribedToBus">
+          <label class="form-check-label" for="subscribedToBus">
+            Subscribed to bus
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <!-- [disabled]="form.invalid || form.pristine" -->
+      <button type="submit" class="btn btn-lg btn-success">Save</button>
+    </div>
+  </form>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <span class="text-muted">AbdoZ Solutions&trade;</span>
+  </div>
+</footer>
