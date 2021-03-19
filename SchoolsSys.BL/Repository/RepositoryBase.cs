@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolsSys.BL.UnitOfWork;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -10,9 +11,18 @@ namespace SchoolsSys.BL.Repository
     {
 
         protected readonly DbContext Context;
+        private readonly IUnitOfWork _uow;
+
+        public RepositoryBase(IUnitOfWork uow)
+        {
+            Context = uow.Context;
+            _uow = uow;
+        }
+
         public RepositoryBase(DbContext context)
         {
             Context = context;
+            Context.Configuration.LazyLoadingEnabled = false;
         }
 
         public void Add(TEntity entity)
@@ -80,17 +90,17 @@ namespace SchoolsSys.BL.Repository
 
         public void Remove(TEntity entity)
         {
-            Context.Set<TEntity>().Remove(entity);
+            Context.Entry(entity).State = EntityState.Deleted;
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
-            Context.Set<TEntity>().RemoveRange(entities);
+            foreach (var entity in entities)
+                Context.Entry(entity).State = EntityState.Deleted;
         }
 
         public void Update(TEntity entity)
         {
-            Context.Set<TEntity>().Attach(entity);
             Context.Entry(entity).State = EntityState.Modified;
         }
 

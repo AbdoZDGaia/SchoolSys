@@ -11,28 +11,27 @@ namespace SchoolsSys.API.Controllers
     [RoutePrefix("api/Queries")]
     public class QueriesController : ApiController
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public QueriesController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         [HttpGet]
         [Route("GetAllStudents")]
         public List<StudentDTO> GetAllStudents()
         {
-            using (var UoW = new UnitOfWork(new SchoolsSysDBContext()))
-            {
-                var _students = UoW.Students;
-                var result = _students.GetAllStudents();
-                return result;
-            }
+            var result = _unitOfWork.StudentsRepo.GetAllStudents();
+            return result;
         }
 
         [HttpGet]
         [Route("GetStudentsById")]
         public StudentDTO GetStudentsById(int StudentId)
         {
-            using (var UoW = new UnitOfWork(new SchoolsSysDBContext()))
-            {
-                var _students = UoW.Students;
-                var result = _students.GetFirstOrDefault(s=>s.StudentId == StudentId).ConvertToStudentDTO();
-                return result;
-            }
+            var result = _unitOfWork.StudentsRepo.GetFirstOrDefault(s => s.StudentId == StudentId).ConvertToStudentDTO();
+            return result;
         }
 
         [HttpGet]

@@ -1,9 +1,11 @@
 ﻿using SchoolsSys.BL.Converters;
 using SchoolsSys.BL.DTOs;
 using SchoolsSys.BL.Models;
+using SchoolsSys.BL.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -12,12 +14,7 @@ namespace SchoolsSys.BL.Repository
 {
     public class StudentsRepository : RepositoryBase<Student>, IStudentsRepository
     {
-        public SchoolsSysDBContext SchoolsSysDBContext
-        {
-            get { return Context as SchoolsSysDBContext; }
-        }
-
-        public StudentsRepository(SchoolsSysDBContext context) : base(context)
+        public StudentsRepository(DbContext context ) : base(context)
         {
         }
 

@@ -1,34 +1,111 @@
 ﻿using SchoolsSys.BL.Models;
 using SchoolsSys.BL.Repository;
-using System.Collections.Generic;
+using System;
+using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace SchoolsSys.BL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly SchoolsSysDBContext _ctx;
+        private SchoolsSysDBContext _dbContext;
+        DbContextTransaction dbContextTransaction = null;
+        private bool disposed = false;
 
-        public UnitOfWork(SchoolsSysDBContext ctx)
+        public UnitOfWork()
         {
-            _ctx = ctx;
-            _ctx.Configuration.AutoDetectChangesEnabled = true;
-            Attachments = new AttachmentsRepository(_ctx);
-            Students = new StudentsRepository(_ctx);
+            _dbContext = new SchoolsSysDBContext();
         }
 
-        public IAttachmentsRepository Attachments { get; private set; }
-        public IStudentsRepository Students { get; private set; }
-
-
-        public int Complete()
+        protected virtual void Dispose(bool disposing)
         {
-            return _ctx.SaveChanges();
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _dbContext.Dispose();
+                }
+            }
+            this.disposed = true;
         }
-
 
         public void Dispose()
         {
-            _ctx.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        public async Task<int> SaveChanges()
+        {
+            try
+            {
+                if (_dbContext.ChangeTracker.HasChanges())
+                {
+                    return await _dbContext.SaveChangesAsync();
+                }
+
+            }
+            catch (Exception ex) { }
+            return -1;
+        }
+
+        public DbContext Context
+        {
+            get { return _dbContext; }
+        }
+
+        public void BeginTransaction()
+        {
+            dbContextTransaction = _dbContext.Database.BeginTransaction();
+        }
+
+        public void Commit()
+        {
+            try
+            {
+                if (dbContextTransaction != null)
+                {
+                    dbContextTransaction.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                if (dbContextTransaction != null)
+                    RollBack();
+            }
+        }
+
+        public void RollBack()
+        {
+            dbContextTransaction.Rollback();
+        }
+
+        private IStudentsRepository studentsRepo;
+        public IStudentsRepository StudentsRepo
+        {
+            get
+            {
+                if (studentsRepo == null)
+                {
+                    studentsRepo = new StudentsRepository(_dbContext);
+                }
+
+                return studentsRepo;
+            }
+        }
+
+        private IAttachmentsRepository attachmentsRepo;
+        public IAttachmentsRepository AttachmentsRepo
+        {
+            get
+            {
+                if (attachmentsRepo == null)
+                {
+                    attachmentsRepo = new AttachmentsRepository(_dbContext);
+                }
+
+                return attachmentsRepo;
+            }
         }
     }
 }

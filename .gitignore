@@ -14,7 +14,7 @@
 
 # User-specific files
 *.rsuser
-*.suo
+**/*.suo
 *.user
 *.userosscache
 *.sln.docstates
@@ -40,6 +40,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+Debug/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

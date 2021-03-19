@@ -1,6 +1,6 @@
 ﻿using SchoolsSys.BL.Converters;
 using SchoolsSys.BL.DTOs;
-using SchoolsSys.BL.Models;
+using SchoolsSys.BL.Repository;
 using SchoolsSys.BL.UnitOfWork;
 using System.Collections.Generic;
 using System.Web;
@@ -11,21 +11,23 @@ namespace SchoolSys.API.Controllers
     [RoutePrefix("api/Students")]
     public class StudentsController : ApiController
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public StudentsController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+
         [HttpPost]
         [Route("CreateStudent")]
         public StudentDTO CreateStudent(StudentDTO student)
         {
-            using (var UoW = new UnitOfWork(new SchoolsSysDBContext()))
+            if (student == null || student.StudentId > 0)
             {
-                var _students = UoW.Students;
-
-                if (student == null || student.StudentId > 0)
-                {
-                    return new StudentDTO();
-                }
-                _students.Add(EntityConverters.PopulateNewStudentFromDTO(student));
-                UoW.Complete();
+                return new StudentDTO();
             }
+            _unitOfWork.StudentsRepo.Add(EntityConverters.PopulateNewStudentFromDTO(student));
             return student;
         }
 
@@ -33,11 +35,7 @@ namespace SchoolSys.API.Controllers
         [Route("Upload")]
         public string Upload()
         {
-            using (var UoW = new UnitOfWork(new SchoolsSysDBContext()))
-            {
-                var _students = UoW.Students;
-                var result = _students.UploadProfileImage(HttpContext.Current.Request);
-                UoW.Complete();
+                var result = _unitOfWork.StudentsRepo.UploadProfileImage(HttpContext.Current.Request);
                 switch (result)
                 {
                     case "Failed":
@@ -45,20 +43,14 @@ namespace SchoolSys.API.Controllers
                     default:
                         return result;
                 }
-            }
         }
 
         [HttpPost]
         [Route("UploadFiles")]
         public List<string> UploadFiles()
         {
-            using (var UoW = new UnitOfWork(new SchoolsSysDBContext()))
-            {
-                var _students = UoW.Students;
-                var result = _students.UploadAttachments(HttpContext.Current.Request);
-
+                var result = _unitOfWork.StudentsRepo.UploadAttachments(HttpContext.Current.Request);
                 return result;
-            }
         }
     }
 }

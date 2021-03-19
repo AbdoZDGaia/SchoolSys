@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
+using SchoolsSys.BL.Models;
 using SchoolsSys.BL.Repository;
 using SchoolsSys.BL.UnitOfWork;
 using System.Reflection;
@@ -21,6 +22,7 @@ namespace SchoolSys.API.App_Start
 
         private static IContainer RegisterServices(ContainerBuilder builder)
         {
+            builder.RegisterType<SchoolsSysDBContext>().InstancePerRequest();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerDependency();
             builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>)).InstancePerDependency();
