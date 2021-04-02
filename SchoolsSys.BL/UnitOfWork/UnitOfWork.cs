@@ -67,6 +67,7 @@ namespace SchoolsSys.BL.UnitOfWork
                 {
                     dbContextTransaction.Commit();
                 }
+                _dbContext.SaveChanges();
             }
             catch (Exception ex)
             {

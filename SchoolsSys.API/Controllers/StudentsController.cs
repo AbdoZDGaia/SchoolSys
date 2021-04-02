@@ -1,6 +1,5 @@
 ﻿using SchoolsSys.BL.Converters;
 using SchoolsSys.BL.DTOs;
-using SchoolsSys.BL.Repository;
 using SchoolsSys.BL.UnitOfWork;
 using System.Collections.Generic;
 using System.Web;
@@ -28,6 +27,7 @@ namespace SchoolSys.API.Controllers
                 return new StudentDTO();
             }
             _unitOfWork.StudentsRepo.Add(EntityConverters.PopulateNewStudentFromDTO(student));
+            _unitOfWork.Commit();
             return student;
         }
 
@@ -35,22 +35,26 @@ namespace SchoolSys.API.Controllers
         [Route("Upload")]
         public string Upload()
         {
-                var result = _unitOfWork.StudentsRepo.UploadProfileImage(HttpContext.Current.Request);
-                switch (result)
-                {
-                    case "Failed":
-                        return "";
-                    default:
-                        return result;
-                }
+            var result = _unitOfWork.StudentsRepo.UploadProfileImage(HttpContext.Current.Request);
+            _unitOfWork.Commit();
+
+            switch (result)
+            {
+                case "Failed":
+                    return "";
+                default:
+                    return result;
+            }
         }
 
         [HttpPost]
         [Route("UploadFiles")]
         public List<string> UploadFiles()
         {
-                var result = _unitOfWork.StudentsRepo.UploadAttachments(HttpContext.Current.Request);
-                return result;
+            var result = _unitOfWork.StudentsRepo.UploadAttachments(HttpContext.Current.Request);
+            _unitOfWork.Commit();
+
+            return result;
         }
     }
 }

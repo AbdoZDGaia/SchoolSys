@@ -24,3 +24,16 @@ F:\Work\Mine\Side Proj\SchoolsSys\SchoolsSys.BL\obj\Release\SchoolsSys.BL.csproj
 F:\Work\Mine\Side Proj\SchoolsSys\SchoolsSys.BL\obj\Release\SchoolsSys.BL.csproj.CopyComplete
 F:\Work\Mine\Side Proj\SchoolsSys\SchoolsSys.BL\obj\Release\SchoolSys.BL.dll
 F:\Work\Mine\Side Proj\SchoolsSys\SchoolsSys.BL\obj\Release\SchoolSys.BL.pdb
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\bin\Release\SchoolSys.BL.dll.config
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\bin\Release\SchoolSys.BL.dll
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\bin\Release\SchoolSys.BL.pdb
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\bin\Release\Elmah.dll
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\bin\Release\EntityFramework.dll
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\bin\Release\EntityFramework.SqlServer.dll
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\bin\Release\EntityFramework.xml
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\bin\Release\EntityFramework.SqlServer.xml
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\obj\Release\SchoolsSys.BL.csprojAssemblyReference.cache
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\obj\Release\SchoolsSys.BL.csproj.CoreCompileInputs.cache
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\obj\Release\SchoolsSys.BL.csproj.CopyComplete
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\obj\Release\SchoolSys.BL.dll
+F:\Work\Mine\Git\SchoolSys\SchoolsSys.BL\obj\Release\SchoolSys.BL.pdb
